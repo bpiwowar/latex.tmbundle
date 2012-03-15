@@ -33,8 +33,12 @@ end
 def outline_points(filename)
   points = []
   if filename.is_a?(String) then
-    data = File.read(filename)
-    name = "url=file://" + e_url(filename) + "&amp;"
+    if File.exists?(filename)
+      data = File.read(filename)
+      name = "url=file://" + e_url(filename) + "&amp;"
+    else
+      data = ""
+    end
   else
     data = filename.read
     name = ""
